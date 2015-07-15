@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"AUGUSTASOFTSOLN-10108-stdout-1436964494174.txt","computername":"AUGUSTASOFTSOLN","pid":10108,"type":"stdout","created":1436964494174},{"file":"AUGUSTASOFTSOLN-10328-stderr-1436956997289.txt","computername":"AUGUSTASOFTSOLN","pid":10328,"type":"stderr","created":1436956997289},{"file":"AUGUSTASOFTSOLN-10328-stdout-1436956997287.txt","computername":"AUGUSTASOFTSOLN","pid":10328,"type":"stdout","created":1436956997287},{"file":"AUGUSTASOFTSOLN-12648-stdout-1436960371329.txt","computername":"AUGUSTASOFTSOLN","pid":12648,"type":"stdout","created":1436960371329},{"file":"AUGUSTASOFTSOLN-15676-stdout-1436962370565.txt","computername":"AUGUSTASOFTSOLN","pid":15676,"type":"stdout","created":1436962370565},{"file":"AUGUSTASOFTSOLN-5232-stderr-1436957494519.txt","computername":"AUGUSTASOFTSOLN","pid":5232,"type":"stderr","created":1436957494519},{"file":"AUGUSTASOFTSOLN-5232-stdout-1436957494517.txt","computername":"AUGUSTASOFTSOLN","pid":5232,"type":"stdout","created":1436957494517},{"file":"AUGUSTASOFTSOLN-6052-stdout-1436962822878.txt","computername":"AUGUSTASOFTSOLN","pid":6052,"type":"stdout","created":1436962822878},{"file":"AUGUSTASOFTSOLN-6368-stderr-1436957312004.txt","computername":"AUGUSTASOFTSOLN","pid":6368,"type":"stderr","created":1436957312004},{"file":"AUGUSTASOFTSOLN-6368-stdout-1436957312002.txt","computername":"AUGUSTASOFTSOLN","pid":6368,"type":"stdout","created":1436957312002},{"file":"AUGUSTASOFTSOLN-8980-stderr-1436957184375.txt","computername":"AUGUSTASOFTSOLN","pid":8980,"type":"stderr","created":1436957184375},{"file":"AUGUSTASOFTSOLN-8980-stdout-1436957184372.txt","computername":"AUGUSTASOFTSOLN","pid":8980,"type":"stdout","created":1436957184372},{"file":"AUGUSTASOFTSOLN-9236-stderr-1436957339376.txt","computername":"AUGUSTASOFTSOLN","pid":9236,"type":"stderr","created":1436957339376},{"file":"AUGUSTASOFTSOLN-9236-stdout-1436957339373.txt","computername":"AUGUSTASOFTSOLN","pid":9236,"type":"stdout","created":1436957339373},{"file":"AUGUSTASOFTSOLN-9912-stdout-1436964037779.txt","computername":"AUGUSTASOFTSOLN","pid":9912,"type":"stdout","created":1436964037779}];
+        var lastUpdated = 1436964496197;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

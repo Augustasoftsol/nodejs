@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MEAN</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script src="angular.js"></script>
+    <script src="angular-file-upload-shim.js"></script>
+    <script src="angular-file-upload.js"></script>
+    <script src="app.js"></script>
+    <script src="User/usercontroller.js"></script>
+    <script src="User/userservice.js"></script>
+</head>
+<body ng-app="myapp">
+
+    <div ng-controller="usercontroller">
+        First name <input type="text" ng-model="user.firstname" />
+        Last name <input type="text" ng-model="user.lastname" />
+
+        <input type="button" ng-click="addContact()" />
+
+        <div ng-repeat="item in contactList">
+            firstname  : {{item.firstname}}
+            lastname : {{item.lastname}}
+            <a href="" ng-click="edit(item)">edit</a><a href="" ng-click="delUsr(item)">delete</a>
+        </div>
+
+
+        <input type="text" ng-model="login.username" />
+        <input type="text" ng-model="login.password" />
+        <input type="button" value="save" ng-click="signin()" />
+
+<form>
+        <div>
+            <h1>Register</h1>
+            <input type="text" ng-model="register.tttttt" />
+            <input type="text" ng-model="register.password" />
+            <input type="text" ng-model="register.email" />
+            <input type="text" ng-model="register.firstName" />
+            <input type="text" ng-model="register.lastName" />
+            <input id="logo" type="file" name="imglogo" ng-file-select="onFileSelect($files)" accept="image/*" data-max-size="1000000"
+                   placeholder="Logo" />
+
+            <input type="submit" value="register" ng-click="register()" />
+
+        </div>
+</form>
+    </div>
+</body>
+</html>

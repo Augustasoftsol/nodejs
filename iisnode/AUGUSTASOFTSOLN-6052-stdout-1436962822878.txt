@@ -1,0 +1,11 @@
+MEAN.JS application started on port 8080
+{ FirstName: 'Balamurali',
+  LastName: 'Elangovan',
+  DeskNo: '9696969696',
+  Email: 'ebalamurali@augustasoftsol.com',
+  SoftPhone: 'Y' }
+{ FirstName: 'Prakash',
+  LastName: 'Kalikrishnan',
+  DeskNo: '6868686868',
+  Email: 'nkprakash@augustasoftsol.com',
+  SoftPhone: 'Y' }
